@@ -31,11 +31,11 @@ export default function Registrar() {
     <main>
       <form onSubmit={registrarDados}>
       
-        <input type="text" value={nome} onChange={(event) => setNome(event.target.value)}/>
+        <input type="text" name='' id="" value={nome} onChange={(event) => setNome(event.target.value)}/>
         
-        <input type="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
+        <input type="email" name='' id="" value={email} onChange={(event) => setEmail(event.target.value)}/>
       
-        <button type="submit">Registrar</button>
+        <button>Registrar</button>
       
       </form>
     </main>

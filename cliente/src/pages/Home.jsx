@@ -15,7 +15,7 @@ export default function Home() {
       }
     }
     buscarUsuario();
-  }, [])
+  }, [usuarios])
 
   const removerPessoa = async (id) => {
     try{ 
