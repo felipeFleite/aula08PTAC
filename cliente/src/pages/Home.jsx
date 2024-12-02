@@ -20,7 +20,7 @@ export default function Home() {
   const removerPessoa = async (id) => {
     try{ 
       await fetch('http://localhost:3000/usuarios/' +id ,{
-        method: DELETE
+        method: "DELETE"
       })
   }catch{
     alert("deu erro")
