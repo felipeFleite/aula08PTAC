@@ -1,9 +1,12 @@
 import { useState } from "react";
+import{ useNavigate } from "react-router-dom"
 
 export default function Registrar() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
 
+  const navigation = useNavigate()
+ 
   const registrarDados = async (event) => {
     event.preventDefault(); 
 
@@ -16,6 +19,9 @@ export default function Registrar() {
           email: email
         })
       });
+      if(resposta.ok){
+        navigation('/')
+      }
     } catch (error) {
       alert('Ocorreu erro na aplicação');
     }
@@ -25,9 +31,9 @@ export default function Registrar() {
     <main>
       <form onSubmit={registrarDados}>
       
-        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)}/>
+        <input type="text" value={nome} onChange={(event) => setNome(event.target.value)}/>
         
-        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input type="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
       
         <button type="submit">Registrar</button>
       
