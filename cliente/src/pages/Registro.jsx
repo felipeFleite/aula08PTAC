@@ -6,7 +6,7 @@ export default function Registrar() {
   const [email, setEmail] = useState('');
 
   const navigation = useNavigate()
-  
+   
   const registrarDados = async (event) => {
     event.preventDefault(); 
 
