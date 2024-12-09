@@ -48,7 +48,7 @@ export default function Home() {
 
   return (
     <>
-    <Button variant="contained" onClick={() => exportarPDF()}>Gerar PDF</Button>
+    <Button variant="outlined" onClick={() => exportarPDF()}>Gerar PDF</Button>
     <table>
       <tr>
         <td>Nome</td>
