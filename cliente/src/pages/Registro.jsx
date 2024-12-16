@@ -20,8 +20,13 @@ export default function Registrar() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          nome: nome,
-          email: email
+          usuario:nome,
+          usuario:preco,
+          usuario:date,
+          usuario:autor,
+          usuario:qPaginas,
+          usuario:genero,
+          usuario:idioma,
         })
       });
       if(resposta.ok){
@@ -49,6 +54,7 @@ export default function Registrar() {
         <input type="text" name='' id="" value={genero} onChange={(event) => setGenero(event.target.value)}/>
 
         <input type="text" name='' id="" value={idioma} onChange={(event) => setIdioma(event.target.value)}/>
+        
         <button>Registrar</button>
       
       </form>
