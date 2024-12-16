@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { jsPDF } from "jspdf"
 import "jspdf-autotable"
 import { Button } from '@mui/material'
-
+import { Link } from "react-router-dom";
 export default function Home() {
 
   const [usuarios, setUsuarios] = useState([]);
@@ -34,7 +34,12 @@ export default function Home() {
     const doc = new jsPDF()
     const tableData = usuarios.map((usuario) => [
       usuario.nome,
-      usuario.email,
+      usuario.preco,
+      usuario.date,
+      usuario.autor,
+      usuario.qPaginas,
+      usuario.genero,
+      usuario.idioma,
     ])
 
     doc.text("Lista de Usuários",10,10)
@@ -57,11 +62,18 @@ export default function Home() {
       {usuarios.map((usuario) =>
         <tr key={usuario.id}>
           <td>{usuario.nome}</td>
-          <td>{usuario.email}</td>
+          <td>{usuario.preco}</td>
+          <td>{usuario.date}</td>
+          <td>{usuario.autor}</td>
+          <td>{usuario.qPaginas}</td>
+          <td>{usuario.genero}</td>
+          <td>{usuario.idioma}</td>
           <td><button onClick={() =>removerPessoa(usuario.id)}>X</button></td>
+          <td>
           <Link to={'/alterar/' + usuario.id}>
           <button>Alterar</button>
           </Link>
+          </td>
         </tr>
       )}
     </table>

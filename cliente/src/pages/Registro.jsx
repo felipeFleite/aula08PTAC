@@ -3,7 +3,12 @@ import{ useNavigate } from "react-router-dom"
 
 export default function Registrar() {
   const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
+  const [preco, setPreco] = useState('');
+  const [date, setDate] = useState('');
+  const [autor, setAutor] = useState('');
+  const [qPaginas, setQPaginas] = useState('');
+  const [genero, setGenero] = useState('');
+  const [idioma, setIdioma] = useState('');
 
   const navigation = useNavigate()
    
@@ -33,8 +38,17 @@ export default function Registrar() {
       
         <input type="text" name='' id="" value={nome} onChange={(event) => setNome(event.target.value)}/>
         
-        <input type="email" name='' id="" value={email} onChange={(event) => setEmail(event.target.value)}/>
+        <input type="date" name='' id="" value={date} onChange={(event) => setDate(event.target.value)}/>
       
+        <input type="number" name='' id="" value={preco} onChange={(event) => setPreco(event.target.value)}/>
+
+        <input type="text" name='' id="" value={autor} onChange={(event) => setAutor(event.target.value)}/>
+
+        <input type="number" name='' id="" value={qPaginas} onChange={(event) => setQPaginas(event.target.value)}/>
+
+        <input type="text" name='' id="" value={genero} onChange={(event) => setGenero(event.target.value)}/>
+
+        <input type="text" name='' id="" value={idioma} onChange={(event) => setIdioma(event.target.value)}/>
         <button>Registrar</button>
       
       </form>
