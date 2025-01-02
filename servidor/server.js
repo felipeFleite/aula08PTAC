@@ -5,64 +5,86 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-let usuarios = [];
+let livros = []; // Substituí "usuarios" por "livros" para refletir o contexto correto
 
-app.post('/usuarios', (req, res) => {
-    const { nome, email } = req.body;
-    
-    if (!nome || !email) {
-        return res.status(400).json({ erro: 'Nome e email são obrigatórios' });
+// Rota para registrar um novo livro
+app.post('/livros', (req, res) => {
+    const { nome, preco, data, autor, quantidadePaginas, genero, idioma } = req.body;
+
+    if (!nome || !preco || !data || !autor || !quantidadePaginas || !genero || !idioma) {
+        return res.status(400).json({ erro: 'Todos os campos são obrigatórios' });
     }
 
-    const novoUsuario = { id: usuarios.length + 1, nome, email };
-    usuarios.push(novoUsuario);
-    
-    res.status(201).json(novoUsuario);
+    const novoLivro = {
+        id: livros.length + 1,
+        nome,
+        preco,
+        data,
+        autor,
+        quantidadePaginas,
+        genero,
+        idioma
+    };
+
+    livros.push(novoLivro);
+
+    res.status(201).json(novoLivro);
 });
 
-app.get('/usuarios', (req, res) => {
-    res.status(200).json(usuarios);
+// Rota para obter todos os livros
+app.get('/livros', (req, res) => {
+    res.status(200).json(livros);
 });
 
-app.get('/usuarios/:id', (req, res) => {
+// Rota para obter um livro específico pelo ID
+app.get('/livros/:id', (req, res) => {
     const { id } = req.params;
-    const usuario = usuarios.find(u => u.id === parseInt(id));
-    
-    if (!usuario) {
-        return res.status(404).json({ erro: 'Usuário não encontrado' });
+    const livro = livros.find(l => l.id === parseInt(id));
+
+    if (!livro) {
+        return res.status(404).json({ erro: 'Livro não encontrado' });
     }
-    
-    res.status(200).json(usuario);
+
+    res.status(200).json(livro);
 });
 
-app.put('/usuarios/:id', (req, res) => {
+// Rota para atualizar informações de um livro
+app.put('/livros/:id', (req, res) => {
     const { id } = req.params;
-    const { nome, email } = req.body;
-    
-    const usuario = usuarios.find(u => u.id === parseInt(id));
-    
-    if (!usuario) {
-        return res.status(404).json({ erro: 'Usuário não encontrado' });
+    const { nome, preco, data, autor, quantidadePaginas, genero, idioma } = req.body;
+
+    const livro = livros.find(l => l.id === parseInt(id));
+
+    if (!livro) {
+        return res.status(404).json({ erro: 'Livro não encontrado' });
     }
-    
-    usuario.nome = nome || usuario.nome;
-    usuario.email = email || usuario.email;
-    
-    res.status(200).json(usuario);
+
+    // Atualiza apenas os campos enviados no corpo da requisição
+    livro.nome = nome || livro.nome;
+    livro.preco = preco || livro.preco;
+    livro.data = data || livro.data;
+    livro.autor = autor || livro.autor;
+    livro.quantidadePaginas = quantidadePaginas || livro.quantidadePaginas;
+    livro.genero = genero || livro.genero;
+    livro.idioma = idioma || livro.idioma;
+
+    res.status(200).json(livro);
 });
 
-app.delete('/usuarios/:id', (req, res) => {
+// Rota para deletar um livro pelo ID
+app.delete('/livros/:id', (req, res) => {
     const { id } = req.params;
-    const index = usuarios.findIndex(u => u.id === parseInt(id));
-    
+    const index = livros.findIndex(l => l.id === parseInt(id));
+
     if (index === -1) {
-        return res.status(404).json({ erro: 'Usuário não encontrado' });
+        return res.status(404).json({ erro: 'Livro não encontrado' });
     }
-    
-    usuarios.splice(index, 1);
+
+    livros.splice(index, 1);
     res.status(204).send();
 });
 
+// Inicializa o servidor
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
 });

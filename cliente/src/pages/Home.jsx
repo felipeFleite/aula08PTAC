@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     const buscarUsuario = async () => {
       try {
-        const resposta = await fetch("http://localhost:3000/usuarios");
+        const resposta = await fetch("http://localhost:3000/livros");
         const dados = await resposta.json();
         setUsuarios(dados);
       } catch {
@@ -20,9 +20,9 @@ export default function Home() {
     buscarUsuario();
   }, [usuarios])
 
-  const removerPessoa = async (id) => {
+  const removerLivro = async (id) => {
     try{ 
-      await fetch('http://localhost:3000/usuarios/' +id ,{
+      await fetch('http://localhost:3000/livros/' +id ,{
         method: "DELETE"
       })
   }catch{
@@ -42,13 +42,13 @@ export default function Home() {
       usuario.idioma,
     ])
 
-    doc.text("Lista de Usuários",10,10)
+    doc.text("Lista de Livros",10,10)
     doc.autoTable({
       head: [["Nome","E-mail"]],
       body: tableData,
     })
 
-    doc.save('alunosIFMS.pdf')
+    doc.save('livros.pdf')
   }
 
   return (
@@ -68,7 +68,7 @@ export default function Home() {
           <td>{usuario.qPaginas}</td>
           <td>{usuario.genero}</td>
           <td>{usuario.idioma}</td>
-          <td><button onClick={() =>removerPessoa(usuario.id)}>X</button></td>
+          <td><button onClick={() =>removerLivro(usuario.id)}>X</button></td>
           <td>
           <Link to={'/alterar/' + usuario.id}>
           <button>Alterar</button>

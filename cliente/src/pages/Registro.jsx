@@ -1,5 +1,5 @@
 import { useState } from "react";
-import{ useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export default function Registrar() {
   const [nome, setNome] = useState('');
@@ -10,53 +10,56 @@ export default function Registrar() {
   const [genero, setGenero] = useState('');
   const [idioma, setIdioma] = useState('');
 
-  const navigation = useNavigate()
-   
+  const navigation = useNavigate();
+
   const registrarDados = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     try {
-      const resposta = await fetch('http://localhost:3000/usuarios', { 
+      const resposta = await fetch('http://localhost:3000/livros', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          usuario:nome,
-          usuario:preco,
-          usuario:date,
-          usuario:autor,
-          usuario:qPaginas,
-          usuario:genero,
-          usuario:idioma,
+          nome,
+          preco,
+          data: date,
+          autor,
+          quantidadePaginas: qPaginas,
+          genero,
+          idioma
         })
       });
-      if(resposta.ok){
-        navigation('/')
+
+      if (resposta.ok) {
+        alert('Livro registrado com sucesso!');
+        navigation('/');
+      } else {
+        alert('Erro ao registrar o livro. Verifique os campos.');
       }
     } catch (error) {
-      alert('Ocorreu erro na aplicação');
+      console.error('Erro ao registrar os dados:', error);
+      alert('Ocorreu um erro. Tente novamente mais tarde.');
     }
   };
 
   return (
     <main>
       <form onSubmit={registrarDados}>
-      
-        <input type="text" name='' id="" value={nome} onChange={(event) => setNome(event.target.value)}/>
-        
-        <input type="date" name='' id="" value={date} onChange={(event) => setDate(event.target.value)}/>
-      
-        <input type="number" name='' id="" value={preco} onChange={(event) => setPreco(event.target.value)}/>
+        <input type="text" id="nome" value={nome} onChange={(event) => setNome(event.target.value)} required />
 
-        <input type="text" name='' id="" value={autor} onChange={(event) => setAutor(event.target.value)}/>
+        <input type="date" id="date" value={date} onChange={(event) => setDate(event.target.value)} required />
 
-        <input type="number" name='' id="" value={qPaginas} onChange={(event) => setQPaginas(event.target.value)}/>
+        <input type="number" id="preco" value={preco} onChange={(event) => setPreco(event.target.value)} required />
 
-        <input type="text" name='' id="" value={genero} onChange={(event) => setGenero(event.target.value)}/>
+        <input type="text" id="autor" value={autor} onChange={(event) => setAutor(event.target.value)} required />
 
-        <input type="text" name='' id="" value={idioma} onChange={(event) => setIdioma(event.target.value)}/>
-        
-        <button>Registrar</button>
-      
+        <input type="number" id="qPaginas" value={qPaginas} onChange={(event) => setQPaginas(event.target.value)} required />
+
+        <input type="text" id="genero" value={genero} onChange={(event) => setGenero(event.target.value)} required />
+
+        <input type="text" id="idioma" value={idioma} onChange={(event) => setIdioma(event.target.value)} required />
+
+        <button type="submit">Registrar</button>
       </form>
     </main>
   );
