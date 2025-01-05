@@ -2,32 +2,42 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Registrar() {
-  const [nome, setNome] = useState('');
-  const [preco, setPreco] = useState('');
-  const [date, setDate] = useState('');
-  const [autor, setAutor] = useState('');
-  const [qPaginas, setQPaginas] = useState('');
-  const [genero, setGenero] = useState('');
-  const [idioma, setIdioma] = useState('');
+  const [livro, setLivro] = useState({
+    nome: "",
+    preco: "",
+    date: "",
+    autor: "",
+    qPaginas: "",
+    genero: "",
+    idioma: "",
+  });
 
   const navigation = useNavigate();
+
+  const attvalue = (event) => {
+    const { id, value } = event.target;
+    setLivro({
+      ...livro,
+      [id]: value,
+    });
+  };
 
   const registrarDados = async (event) => {
     event.preventDefault();
 
     try {
-      const resposta = await fetch('http://localhost:3000/livros', { 
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const resposta = await fetch("http://localhost:3000/livros", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          nome,
-          preco,
-          data: date,
-          autor,
-          quantidadePaginas: qPaginas,
-          genero,
-          idioma
-        })
+          nome: livro.nome,
+          preco: livro.preco,
+          data: livro.date,
+          autor: livro.autor,
+          quantidadePaginas: livro.qPaginas,
+          genero: livro.genero,
+          idioma: livro.idioma,
+        }),
       });
 
       if (resposta.ok) {
@@ -38,26 +48,29 @@ export default function Registrar() {
       }
     } catch (error) {
       console.error('Erro ao registrar os dados:', error);
-      alert('Ocorreu um erro. Tente novamente mais tarde.');
+      alert('Ocorreu um erro.');
     }
   };
 
   return (
     <main>
+
+    <h1>Registrar Livro</h1>
+
       <form onSubmit={registrarDados}>
-        <input type="text" id="nome" value={nome} onChange={(event) => setNome(event.target.value)} required />
+        <input type="text" id="nome" value={livro.nome} onChange={attvalue} required />
 
-        <input type="date" id="date" value={date} onChange={(event) => setDate(event.target.value)} required />
+        <input type="date" id="date" value={livro.date} onChange={attvalue} required />
 
-        <input type="number" id="preco" value={preco} onChange={(event) => setPreco(event.target.value)} required />
+        <input type="number" id="preco" value={livro.preco} onChange={attvalue} required />
 
-        <input type="text" id="autor" value={autor} onChange={(event) => setAutor(event.target.value)} required />
+        <input type="text" id="autor" value={livro.autor} onChange={attvalue} required />
 
-        <input type="number" id="qPaginas" value={qPaginas} onChange={(event) => setQPaginas(event.target.value)} required />
+        <input type="number" id="qPaginas" value={livro.qPaginas} onChange={attvalue} required />
 
-        <input type="text" id="genero" value={genero} onChange={(event) => setGenero(event.target.value)} required />
+        <input type="text" id="genero" value={livro.genero} onChange={attvalue} required />
 
-        <input type="text" id="idioma" value={idioma} onChange={(event) => setIdioma(event.target.value)} required />
+        <input type="text" id="idioma" value={livro.idioma} onChange={attvalue} required />
 
         <button type="submit">Registrar</button>
       </form>
