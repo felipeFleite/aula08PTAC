@@ -87,7 +87,7 @@ export default function Home() {
             <tr key={usuario.id}>
               <td>{usuario.nome}</td>
               <td>{parseFloat(usuario.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-              <td>{new Date(usuario.date)}</td>
+              <td>{new Date(usuario.date).toLocaleDateString()}</td>
               <td>{usuario.autor}</td>
               <td>{usuario.qPaginas}</td>
               <td>{usuario.genero}</td>
