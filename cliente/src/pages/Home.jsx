@@ -28,11 +28,11 @@ export default function Home() {
 
   const removerLivro = async (id) => {
     try {
-      await fetch('http://localhost:3000/livros/' + id, {
+       await fetch('http://localhost:3000/livros/' + id, {
         method: "DELETE"
       })
     } catch {
-      alert("deu erro")
+      alert("Ocorreu um erro!")
     }
   }
 
@@ -50,7 +50,7 @@ export default function Home() {
 
     doc.text("Lista de Livros", 10, 10)
     doc.autoTable({
-      head: [["Nome", "Preço", "Data de lançamento", "Autor", "Páginas", "Gênero", "Idioma"]],
+      head: [["Nome do Livro", "Preço", "Data de lançamento", "Autor", "Páginas", "Gênero", "Idioma"]],
       body: tableData,
     })
 
@@ -62,14 +62,7 @@ export default function Home() {
     <>
       <Button
         variant="contained"
-        className="navegar"
-        onClick={() => navigate('/registrar')}>
-        Home
-      </Button>
-      
-      <Button
-        variant="contained"
-        className="navegar"
+        className="Comeco"
         onClick={() => navigate('/registrar')}>
         Ir para Registro
       </Button>
@@ -79,7 +72,7 @@ export default function Home() {
       <table>
         <thead>
           <tr>
-            <th>Nome</th>
+            <th>Nome do Livro</th>
             <th>Preço</th>
             <th>Data de lançamento</th>
             <th>Autor</th>
@@ -93,8 +86,8 @@ export default function Home() {
           {usuarios.map((usuario) => (
             <tr key={usuario.id}>
               <td>{usuario.nome}</td>
-              <td>{usuario.preco}</td>
-              <td>{new Date(usuario.date).toLocaleDateString()}</td>
+              <td>{parseFloat(usuario.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+              <td>{new Date(usuario.date)}</td>
               <td>{usuario.autor}</td>
               <td>{usuario.qPaginas}</td>
               <td>{usuario.genero}</td>

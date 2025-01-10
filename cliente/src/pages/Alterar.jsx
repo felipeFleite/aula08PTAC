@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import SaveIcon from "@mui/icons-material/Save";
 import BookIcon from "@mui/icons-material/Book";
 import "../estilizacao/Alterar.css";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function Alterar() {
     const { id } = useParams();
@@ -57,6 +58,10 @@ export default function Alterar() {
 
     return (
         <main>
+            <div className="flecha">
+                <ArrowBackIcon
+                    onClick={() => navigate("/")}/>
+                </div>
             <h1>
                 <BookIcon className="icon" />
                 Página Alterar: {nomeOriginal}

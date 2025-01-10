@@ -7,9 +7,7 @@ body {
 }
 
 /* Botões de Navegação */
-.navegar {
-  margin: 10px 10px 0 0;
-  padding: 10px 15px;
+.comeco {
   background-color: #1976d2;
   color: white;
   font-weight: bold;
