@@ -1,104 +1,104 @@
-/* Estilos gerais */
+/* Estilos Gerais */
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-  }
-  
-  /* Botão para exportar PDF */
-  button {
-    background-color: #1976d2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #1565c0;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  /* Tabela */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* Botões de ação na tabela */
-  button.remover {
-    background-color: #d32f2f;
-    margin-right: 5px;
-  }
-  
-  button.remover:hover {
-    background-color: #b71c1c;
-  }
-  
-  button.alterar {
-    background-color: #0288d1;
-  }
-  
-  button.alterar:hover {
-    background-color: #01579b;
-  }
-  
-  /* Título */
-  h1 {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  /* Botão principal para exportar PDF */
-  .MuiButton-outlined {
-    margin: 10px;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  /* Link para alterar */
-  a {
-    text-decoration: none;
-  }
-  
-  a button {
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  /* Ícones */
-  button svg {
-    margin-right: 5px;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+
+/* Botões de Navegação */
+.navegar {
+  margin: 10px 10px 0 0;
+  padding: 10px 15px;
+  background-color: #1976d2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navegar:hover {
+  background-color: #145a9e;
+}
+
+/* Botão Gerar PDF */
+button,
+.MuiButton-root {
+  margin: 15px 0;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead th {
+  background-color: #1976d2;
+  color: white;
+  text-align: left;
+  padding: 10px;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody td {
+  padding: 10px;
+}
+
+/* Botões de Ações */
+.remover,
+.alterar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* Botão Remover */
+.remover {
+  color: white;
+  background-color: #d32f2f;
+}
+
+.remover:hover {
+  background-color: #9a2222;
+}
+
+/* Botão Alterar */
+.alterar {
+  color: white;
+  background-color: #0288d1;
+}
+
+.alterar:hover {
+  background-color: #015f91;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

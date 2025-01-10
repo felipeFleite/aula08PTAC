@@ -6,10 +6,12 @@ import { Button } from '@mui/material'
 import { Link } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
 
   const [usuarios, setUsuarios] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const buscarUsuario = async () => {
@@ -58,6 +60,21 @@ export default function Home() {
 
   return (
     <>
+      <Button
+        variant="contained"
+        className="navegar"
+        onClick={() => navigate('/registrar')}>
+        Home
+      </Button>
+      
+      <Button
+        variant="contained"
+        className="navegar"
+        onClick={() => navigate('/registrar')}>
+        Ir para Registro
+      </Button>
+      
+
       <Button variant="outlined" onClick={() => exportarPDF()}>Gerar PDF</Button>
       <table>
         <thead>
