@@ -9,19 +9,18 @@ let livros = []; // Substituí "usuarios" por "livros" para refletir o contexto 
 
 // Rota para registrar um novo livro
 app.post('/livros', (req, res) => {
-    const { nome, preco, data, autor, quantidadePaginas, genero, idioma } = req.body;
+    const { titulo, preco, autor, paginas, genero, idioma } = req.body;
 
-    if (!nome || !preco || !data || !autor || !quantidadePaginas || !genero || !idioma) {
+    if (!titulo || !preco || !autor || !paginas || !genero || !idioma) {
         return res.status(400).json({ erro: 'Todos os campos são obrigatórios' });
     }
 
     const novoLivro = {
         id: livros.length + 1,
-        nome,
+        titulo,
         preco,
-        data,
         autor,
-        quantidadePaginas,
+        paginas,
         genero,
         idioma
     };
@@ -51,7 +50,7 @@ app.get('/livros/:id', (req, res) => {
 // Rota para atualizar informações de um livro
 app.put('/livros/:id', (req, res) => {
     const { id } = req.params;
-    const { nome, preco, data, autor, quantidadePaginas, genero, idioma } = req.body;
+    const { titulo, preco, autor, paginas, genero, idioma } = req.body;
 
     const livro = livros.find(l => l.id === parseInt(id));
 
@@ -60,11 +59,10 @@ app.put('/livros/:id', (req, res) => {
     }
 
     // Atualiza apenas os campos enviados no corpo da requisição
-    livro.nome = nome || livro.nome;
+    livro.titulo = titulo || livro.titulo;
     livro.preco = preco || livro.preco;
-    livro.data = data || livro.data;
     livro.autor = autor || livro.autor;
-    livro.quantidadePaginas = quantidadePaginas || livro.quantidadePaginas;
+    livro.paginas = paginas || livro.paginas;
     livro.genero = genero || livro.genero;
     livro.idioma = idioma || livro.idioma;
 

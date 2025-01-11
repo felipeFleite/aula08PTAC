@@ -8,11 +8,10 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 export default function Alterar() {
     const { id } = useParams();
     const [livro, setLivro] = useState({
-        nome: "",
+        titulo: "",
         preco: "",
-        date: "",
         autor: "",
-        qPaginas: "",
+        paginas: "",
         genero: "",
         idioma: "",
     });
@@ -25,7 +24,7 @@ export default function Alterar() {
                 const resposta = await fetch(`http://localhost:3000/livros/${id}`);
                 const dados = await resposta.json();
                 setLivro(dados);
-                setNomeOriginal(dados.nome);
+                setNomeOriginal(dados.titulo);
             } catch {
                 alert("Erro ao buscar os dados do livro.");
                 navigate("/");
@@ -70,18 +69,9 @@ export default function Alterar() {
             <form onSubmit={changeserver}>
                 <input
                     type="text"
-                    id="nome"
-                    name="nome"
-                    value={livro.nome}
-                    onChange={change}
-                    required
-                />
-
-                <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={livro.date}
+                    id="titulo"
+                    name="titulo"
+                    value={livro.titulo}
                     onChange={change}
                     required
                 />
@@ -106,9 +96,9 @@ export default function Alterar() {
 
                 <input
                     type="number"
-                    id="qPaginas"
-                    name="qPaginas"
-                    value={livro.qPaginas}
+                    id="paginas"
+                    name="paginas"
+                    value={livro.paginas}
                     onChange={change}
                     required
                 />

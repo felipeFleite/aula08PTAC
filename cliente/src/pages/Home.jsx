@@ -39,18 +39,17 @@ export default function Home() {
   const exportarPDF = () => {
     const doc = new jsPDF()
     const tableData = usuarios.map((usuario) => [
-      usuario.nome,
+      usuario.titulo,
       usuario.preco,
-      usuario.date,
       usuario.autor,
-      usuario.qPaginas,
+      usuario.paginas,
       usuario.genero,
       usuario.idioma,
     ])
 
     doc.text("Lista de Livros", 10, 10)
     doc.autoTable({
-      head: [["Nome do Livro", "Preço", "Data de lançamento", "Autor", "Páginas", "Gênero", "Idioma"]],
+      head: [["titulo do Livro", "Preço", "Autor", "Páginas", "Gênero", "Idioma"]],
       body: tableData,
     })
 
@@ -72,9 +71,8 @@ export default function Home() {
       <table>
         <thead>
           <tr>
-            <th>Nome do Livro</th>
+            <th>titulo do Livro</th>
             <th>Preço</th>
-            <th>Data de lançamento</th>
             <th>Autor</th>
             <th>Quantidade de páginas</th>
             <th>Gênero</th>
@@ -85,11 +83,10 @@ export default function Home() {
         <tbody>
           {usuarios.map((usuario) => (
             <tr key={usuario.id}>
-              <td>{usuario.nome}</td>
+              <td>{usuario.titulo}</td>
               <td>{parseFloat(usuario.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-              <td>{new Date(usuario.date).toLocaleDateString()}</td>
               <td>{usuario.autor}</td>
-              <td>{usuario.qPaginas}</td>
+              <td>{usuario.paginas}</td>
               <td>{usuario.genero}</td>
               <td>{usuario.idioma}</td>
               <td>

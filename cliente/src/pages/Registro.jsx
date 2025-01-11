@@ -4,11 +4,10 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import '../estilizacao/Registrar.css';
 export default function Registrar() {
   const [livro, setLivro] = useState({
-    nome: "",
+    titulo: "",
     preco: "",
-    date: "",
     autor: "",
-    qPaginas: "",
+    paginas: "",
     genero: "",
     idioma: "",
   });
@@ -17,25 +16,26 @@ export default function Registrar() {
 
   const attvalue = (event) => {
     const { id, value } = event.target;
+
     setLivro({
-      ...livro,
-      [id]: value,
+        ...livro,
+        [id]: value
     });
-  };
+};
+
 
   const registrarDados = async (event) => {
     event.preventDefault();
-
+    console.log("Dados enviados:", livro);
     try {
       const resposta = await fetch("http://localhost:3000/livros", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          nome: livro.nome,
+          titulo: livro.titulo,
           preco: livro.preco,
-          data: livro.date,
           autor: livro.autor,
-          quantidadePaginas: livro.qPaginas,
+          paginas: livro.paginas,
           genero: livro.genero,
           idioma: livro.idioma,
         }),
@@ -68,11 +68,10 @@ export default function Registrar() {
         <h1>Registrar Livro</h1>
 
       <form onSubmit={registrarDados} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-        <input type="text" id="nome" placeholder="Nome" value={livro.nome} onChange={attvalue} required />
-        <input type="date" id="date" value={livro.date} onChange={attvalue} required />
+        <input type="text" id="titulo" placeholder="titulo" value={livro.titulo} onChange={attvalue} required />
         <input type="number" id="preco" placeholder="Preço" value={livro.preco} onChange={attvalue} required />
         <input type="text" id="autor" placeholder="Autor" value={livro.autor} onChange={attvalue} required />
-        <input type="number" id="qPaginas" placeholder="Quantidade de Páginas" value={livro.qPaginas} onChange={attvalue} required />
+        <input type="number" id="paginas" placeholder="Quantidade de Páginas" value={livro.paginas} onChange={attvalue} required />
         <input type="text" id="genero" placeholder="Gênero" value={livro.genero} onChange={attvalue} required />
         <input type="text" id="idioma" placeholder="Idioma" value={livro.idioma} onChange={attvalue} required />
         <button type="submit" style={{ padding: "10px", backgroundColor: "#1976d2", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>
