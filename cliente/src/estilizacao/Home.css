@@ -13,6 +13,14 @@ body {
   margin-bottom: 15px; /* Espaço entre os botões e a tabela */
 }
 
+.load {
+  display: flex;
+  justify-content: center;       /* Centraliza horizontalmente */
+  align-items: center;           /* Centraliza verticalmente */
+  height: 100vh;                 /* Preenche toda a altura da tela */
+  width: 100%;                   /* Preenche toda a largura da tela */
+}
+
 /* Botões de Ações */
 .remover,
 .alterar {

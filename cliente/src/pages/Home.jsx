@@ -6,10 +6,11 @@ import { Button } from '@mui/material'
 import { Link } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-
+  
   const [usuarios, setUsuarios] = useState([]);
   const navigate = useNavigate()
 
@@ -55,6 +56,15 @@ export default function Home() {
 
 
     doc.save('livros.pdf')
+  }
+
+
+  if (usuarios.length === 0) {
+    return (
+      <div className="load">
+        <Loading />
+      </div>
+    )
   }
 
   return (
