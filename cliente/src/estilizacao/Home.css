@@ -7,60 +7,16 @@ body {
 }
 
 /* Botões de Navegação */
-.comeco {
-  background-color: #1976d2;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.navegar:hover {
-  background-color: #145a9e;
-}
-
-/* Botão Gerar PDF */
-button,
-.MuiButton-root {
-  margin: 15px 0;
-}
-
-/* Tabela */
-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-  background-color: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-thead th {
-  background-color: #1976d2;
-  color: white;
-  text-align: left;
-  padding: 10px;
-}
-
-tbody tr {
-  border-bottom: 1px solid #ddd;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tbody td {
-  padding: 10px;
+.botao-navegar {
+  display: flex;
+  gap: 10px; /* Espaço entre os botões */
+  margin-bottom: 15px; /* Espaço entre os botões e a tabela */
 }
 
 /* Botões de Ações */
 .remover,
 .alterar {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 5px;
   border: none;
@@ -70,6 +26,7 @@ tbody td {
   font-size: 14px;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  margin: 0 5px; /* Espaço horizontal entre os botões de ação */
 }
 
 /* Botão Remover */
@@ -92,11 +49,36 @@ tbody td {
   background-color: #015f91;
 }
 
-/* Links */
-a {
-  text-decoration: none;
+/* Tabela */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd; /* Adiciona borda geral à tabela */
 }
 
-a:hover {
-  text-decoration: underline;
+thead th {
+  background-color: #1976d2;
+  color: white;
+  text-align: center; /* Centraliza os títulos das colunas */
+  padding: 10px;
+  border: 1px solid #ddd; /* Adiciona borda entre os cabeçalhos */
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody td {
+  padding: 10px;
+  text-align: center; /* Centraliza o conteúdo das células */
+  border: 1px solid #ddd; /* Adiciona borda entre as células */
 }

@@ -59,6 +59,7 @@ export default function Home() {
 
   return (
     <>
+    <div className="botao-navegar">
       <Button
         variant="contained"
         className="Comeco"
@@ -68,6 +69,7 @@ export default function Home() {
       
 
       <Button variant="outlined" onClick={() => exportarPDF()}>Gerar PDF</Button>
+      </div>
       <table>
         <thead>
           <tr>
