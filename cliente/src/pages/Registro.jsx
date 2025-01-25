@@ -26,7 +26,6 @@ export default function Registrar() {
 
   const registrarDados = async (event) => {
     event.preventDefault();
-    console.log("Dados enviados:", livro);
     try {
       const resposta = await fetch("http://localhost:3000/livros", {
         method: "POST",
@@ -68,7 +67,7 @@ export default function Registrar() {
         <h1>Registrar Livro</h1>
 
       <form onSubmit={registrarDados} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-        <input type="text" id="titulo" placeholder="titulo" value={livro.titulo} onChange={attvalue} required />
+        <input type="text" id="titulo" placeholder="Título" value={livro.titulo} onChange={attvalue} required />
         <input type="number" id="preco" placeholder="Preço" value={livro.preco} onChange={attvalue} required />
         <input type="text" id="autor" placeholder="Autor" value={livro.autor} onChange={attvalue} required />
         <input type="number" id="paginas" placeholder="Quantidade de Páginas" value={livro.paginas} onChange={attvalue} required />
